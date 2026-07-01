@@ -92,6 +92,51 @@ class PlaybackControls:
         self.reset_button.draw(screen, font)
 
 
+class SpeedControl:
+    """Adjust animation speed in movement delay milliseconds."""
+
+    def __init__(self, x: int, y: int, initial_delay_ms: int = 120):
+        self.x = x
+        self.y = y
+        self.delay_ms = initial_delay_ms
+        self.slower_button = Button(x, y, 94, 34, "Slower")
+        self.faster_button = Button(x + 104, y, 94, 34, "Faster")
+
+    def handle_click(self, pos: tuple[int, int]) -> int | None:
+        if self.slower_button.contains(pos):
+            self.delay_ms = min(500, self.delay_ms + 20)
+            return self.delay_ms
+        if self.faster_button.contains(pos):
+            self.delay_ms = max(20, self.delay_ms - 20)
+            return self.delay_ms
+        return None
+
+    def draw(self, screen, font) -> None:
+        self.slower_button.draw(screen, font)
+        self.faster_button.draw(screen, font)
+        label = font.render(f"Delay: {self.delay_ms} ms", True, COLORS["black"])
+        screen.blit(label, (self.x + 210, self.y + 6))
+
+
+class ViewModeControls:
+    """Fullscreen toggle controls for the display mode."""
+
+    def __init__(self, x: int, y: int):
+        self.fullscreen_button = Button(x, y, 142, 34, "Fullscreen")
+        self.windowed_button = Button(x + 152, y, 142, 34, "Windowed")
+
+    def handle_click(self, pos: tuple[int, int]) -> str | None:
+        if self.fullscreen_button.contains(pos):
+            return "fullscreen"
+        if self.windowed_button.contains(pos):
+            return "windowed"
+        return None
+
+    def draw(self, screen, font, is_fullscreen: bool) -> None:
+        self.fullscreen_button.draw(screen, font, active=is_fullscreen)
+        self.windowed_button.draw(screen, font, active=not is_fullscreen)
+
+
 class MetricsPanel:
     """Render solver metrics and algorithm notes."""
 

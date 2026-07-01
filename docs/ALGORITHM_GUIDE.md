@@ -21,7 +21,7 @@
 - Time complexity: `O((V + E) log V)`.
 - Strength: robust and widely applicable.
 
-## A*
+## A\*
 
 - Purpose: shortest path with heuristic guidance.
 - Data structure: priority queue.
@@ -40,4 +40,4 @@
 
 - BFS and Flood Fill are the strongest choices for demonstrating grid logic clearly.
 - DFS is useful for exploration but not for shortest-path guarantees.
-- Dijkstra and A* demonstrate the transition from basic graph search to informed search.
+- Dijkstra and A\* demonstrate the transition from basic graph search to informed search.
