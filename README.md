@@ -21,6 +21,7 @@
 - [⚙️ How to Use](#how-to-use)
 - [🗺️ Development Roadmap](#roadmap)
 - [💻 Tech Stack](#tech-stack)
+- [📚 Documentation](#documentation)
 - [🤝 Contributing](#contributing)
 
 ---
@@ -261,6 +262,17 @@ For the **complete week-by-week breakdown**, including:
 
 ---
 
+<a id="documentation"></a>
+
+## 📚 Documentation
+
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) - module structure and design boundaries
+- [docs/ALGORITHM_GUIDE.md](docs/ALGORITHM_GUIDE.md) - algorithm summaries and complexity notes
+- [docs/DATASTRUCTURE_GUIDE.md](docs/DATASTRUCTURE_GUIDE.md) - wall bitmasks, paths, and file format
+- [docs/VIVA_NOTES.md](docs/VIVA_NOTES.md) - short answers and demo flow for defense
+
+---
+
 <a id="contributing"></a>
 
 ## 🤝 Contributing
@@ -281,11 +293,10 @@ Please open an issue with your idea first for discussion.
 
 - **[ROADMAP.md](./ROADMAP.md)** — Detailed 8-week development plan with code examples
 - **[DESCRIPTION.md](./DESCRIPTION.md)** — Project goals and scope
-- Docs folder (in progress):
-  - `ALGORITHM_GUIDE.md` — Deep algorithm explanations
-  - `DATASTRUCTURE_GUIDE.md` — Bitmask wall storage, distance arrays
-  - `ARCHITECTURE.md` — Code organization and design patterns
-  - `VIVA_NOTES.md` — Q&A preparation for project defense
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** — Code organization and design patterns
+- **[docs/ALGORITHM_GUIDE.md](docs/ALGORITHM_GUIDE.md)** — Deep algorithm explanations
+- **[docs/DATASTRUCTURE_GUIDE.md](docs/DATASTRUCTURE_GUIDE.md)** — Bitmask wall storage, distance arrays
+- **[docs/VIVA_NOTES.md](docs/VIVA_NOTES.md)** — Q&A preparation for project defense
 
 ---
 
@@ -331,6 +342,6 @@ This project is open source and available under the MIT License. See LICENSE fil
 
 ---
 
-**Last Updated:** 2026-06-17  
-**Status:** 🚀 In Active Development  
-**Estimated Completion:** 8 weeks from start of Week 1
+**Last Updated:** 2026-07-01  
+**Status:** ✅ Complete  
+**Estimated Completion:** Completed
