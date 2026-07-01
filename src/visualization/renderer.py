@@ -132,3 +132,66 @@ def draw_path(
     color = color or COLORS["yellow"]
     for cell in path:
         draw_cell_fill(screen, cell, cell_size, origin, color)
+
+
+def draw_flood_fill_heatmap(
+    screen,
+    distances: Sequence[Sequence[float]],
+    cell_size: int,
+    origin: tuple[int, int] = (0, 0),
+    max_opacity: int = 190,
+) -> None:
+    """Overlay a heatmap for flood-fill distances."""
+
+    _require_pygame()
+    origin_x, origin_y = origin
+    finite_values = [value for row in distances for value in row if value != float("inf")]
+    if not finite_values:
+        return
+
+    max_distance = max(finite_values)
+    if max_distance == 0:
+        max_distance = 1
+
+    overlay = pygame.Surface((cell_size, cell_size), pygame.SRCALPHA)
+    for row_index, row in enumerate(distances):
+        for col_index, distance in enumerate(row):
+            if distance == float("inf"):
+                continue
+
+            ratio = distance / max_distance
+            red = int(60 + 180 * ratio)
+            blue = int(220 - 160 * ratio)
+            alpha = int(max_opacity * (1.0 - ratio * 0.55))
+            overlay.fill((red, 90, blue, alpha))
+            screen.blit(
+                overlay,
+                (origin_x + col_index * cell_size, origin_y + row_index * cell_size),
+            )
+
+
+def draw_wall_bitmask_overlay(
+    screen,
+    maze: Maze,
+    cell_size: int,
+    origin: tuple[int, int] = (0, 0),
+    font=None,
+) -> None:
+    """Render the 4-bit wall state of each cell on top of the maze."""
+
+    _require_pygame()
+    if font is None:
+        font = pygame.font.SysFont("arial", max(12, cell_size // 4))
+
+    origin_x, origin_y = origin
+    for row in range(maze.rows):
+        for col in range(maze.cols):
+            bitmask = maze.get_wall_state(row, col)
+            label = font.render(f"{bitmask:04b}", True, COLORS["dark_gray"])
+            label_rect = label.get_rect(
+                center=(
+                    origin_x + col * cell_size + cell_size // 2,
+                    origin_y + row * cell_size + cell_size // 2,
+                )
+            )
+            screen.blit(label, label_rect)
